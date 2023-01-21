@@ -28,16 +28,6 @@ npm run build
 npm run lint
 ```
 
-## Some screenshots
-
-**<img style="width: 49%;" src="https://user-images.githubusercontent.com/32201475/192102848-e362d5be-4ca7-4505-ab39-88e96c7ac9a3.png" />**
-**<img style="width: 49%" src="https://user-images.githubusercontent.com/32201475/192103037-efffeba7-2235-484e-a089-4ea7205d3bcf.png" />**
-**<img style="width: 49%; margin-top: 30px; margin-right: 1%;" src="https://user-images.githubusercontent.com/32201475/192103073-844d524b-9020-4109-bd5d-9dee6b70d771.png" />**
-**<img style="width: 49%" src="https://user-images.githubusercontent.com/32201475/192103092-8caad8a5-3067-4fcb-af04-330a5c49de36.png" />**
-**<img style="width: 49%" src="https://user-images.githubusercontent.com/32201475/192103185-d106bdc3-93db-4c87-ab5c-bcde298a6b9b.png" />**
-**<img style="width: 49%" src="https://user-images.githubusercontent.com/32201475/192103140-8e303ff3-1a5d-44bb-bd91-a1dc1a3864dd.png" />**
-*The screenshots use test data
-
 ## Built With
 
 * [Vue](https://vuejs.org/guide/introduction.html) - The web framework used
