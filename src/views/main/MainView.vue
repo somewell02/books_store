@@ -3,7 +3,9 @@
     <!-- <preloader-spinner ref="preloader" />-->
     <div class="main-content">
       <main-first-screen />
-      <main-new-books class="new-books-section" />
+      <main-new-books-section class="new-books-section" />
+      <main-bestsellers-section class="bestsellers-section" />
+      <main-sales-section class="sales-section" />
     </div>
   </base-layout>
 </template>
@@ -11,7 +13,9 @@
 <script>
 import BaseLayout from "@/layouts/BaseLayout.vue";
 import MainFirstScreen from "@/views/main/MainFirstScreen.vue";
-import MainNewBooks from "@/views/main/MainNewBooks.vue";
+import MainNewBooksSection from "@/views/main/MainNewBooksSection.vue";
+import MainBestsellersSection from "@/views/main/MainBestsellersSection.vue";
+import MainSalesSection from "@/views/main/MainSalesSection.vue";
 
 export default {
   data() {
@@ -19,7 +23,9 @@ export default {
   },
 
   components: {
-    MainNewBooks,
+    MainSalesSection,
+    MainBestsellersSection,
+    MainNewBooksSection,
     MainFirstScreen,
     BaseLayout,
   },
@@ -36,6 +42,12 @@ export default {
 .main-content {
   .new-books-section {
     margin-top: 60px;
+  }
+  .bestsellers-section {
+    margin-top: 120px;
+  }
+  .sales-section {
+    margin-top: 120px;
   }
 }
 </style>

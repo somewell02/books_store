@@ -10,12 +10,14 @@
         <nav class="footer-menu-item footer-menu-store">
           <div class="menu-title">Магазин</div>
           <router-link :to="{ name: 'main' }"> Главная </router-link>
-          <router-link :to="{ name: 'main' }"> Каталог </router-link>
+          <router-link :to="{ name: 'books-catalog' }"> Каталог </router-link>
         </nav>
         <nav class="footer-menu-item footer-menu-about">
           <div class="menu-title">Информация</div>
-          <router-link :to="{ name: 'main' }"> Оплата и доставка </router-link>
-          <router-link :to="{ name: 'main' }"> Обатная связь </router-link>
+          <router-link :to="{ name: 'delivery' }">
+            Оплата и доставка
+          </router-link>
+          <router-link :to="{ name: 'feedback' }"> Обатная связь </router-link>
         </nav>
       </div>
       <div class="footer-contacts">

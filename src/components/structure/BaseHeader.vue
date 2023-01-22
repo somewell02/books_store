@@ -10,13 +10,13 @@
         <router-link :to="{ name: 'main' }" class="header-menu-item">
           Главная
         </router-link>
-        <router-link :to="{ name: 'main' }" class="header-menu-item">
+        <router-link :to="{ name: 'books-catalog' }" class="header-menu-item">
           Каталог
         </router-link>
         <router-link :to="{ name: 'delivery' }" class="header-menu-item">
           Оплата и доставка
         </router-link>
-        <router-link :to="{ name: 'main' }" class="header-menu-item">
+        <router-link :to="{ name: 'feedback' }" class="header-menu-item">
           Обатная связь
         </router-link>
       </nav>

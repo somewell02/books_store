@@ -12,6 +12,16 @@ const routes = [
     component: () => import("../views/delivery/DeliveryView.vue"),
   },
   {
+    path: "/feedback",
+    name: "feedback",
+    component: () => import("../views/feedback/FeedbackView.vue"),
+  },
+  {
+    path: "/books",
+    name: "books-catalog",
+    component: () => import("../views/books/BooksCatalogView.vue"),
+  },
+  {
     path: "/admin",
     name: "admin",
     redirect: { name: "admin-orders" },

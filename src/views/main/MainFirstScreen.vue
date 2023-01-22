@@ -83,6 +83,8 @@ export default {
 
     img {
       height: 100%;
+      max-width: 500px;
+      object-fit: contain;
     }
   }
 }

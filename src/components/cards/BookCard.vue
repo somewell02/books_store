@@ -1,15 +1,15 @@
 <template>
   <div class="book-card-wrap">
     <div class="book-card-img">
-      <img src="@/assets/img/95.jpeg" alt="book" />
+      <img :src="item.gallery[0]" :alt="`book-${item.id}`" />
     </div>
     <div class="book-card-content">
       <div class="book-card-info">
-        <div class="book-title">Вязание ХИТОМИ ШИДА. 250 узоров</div>
-        <stars-rating class="book-rating" rating="3" />
+        <div class="book-title">{{ item.title }}</div>
+        <stars-rating class="book-rating" :rating="item.rating" />
       </div>
       <div class="book-card-add-to-cart">
-        <div class="book-price">1808 ₽</div>
+        <div class="book-price">{{ item.price }} ₽</div>
         <add-to-cart-icon class="book-add-to-cart-icon" />
       </div>
     </div>
@@ -25,6 +25,13 @@ export default {
   components: {
     AddToCartIcon,
     StarsRating,
+  },
+
+  props: {
+    item: {
+      type: Object,
+      required: true,
+    },
   },
 };
 </script>
