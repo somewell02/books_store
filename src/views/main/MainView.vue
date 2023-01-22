@@ -1,6 +1,5 @@
 <template>
   <base-layout>
-    <!-- <preloader-spinner ref="preloader" />-->
     <div class="main-content">
       <main-first-screen />
       <main-new-books-section class="new-books-section" />

@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "place-icon",
+  name: "cart-icon",
 };
 </script>
 

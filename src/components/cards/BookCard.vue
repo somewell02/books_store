@@ -1,6 +1,6 @@
 <template>
   <div class="book-card-wrap">
-    <div class="book-card-img">
+    <div class="book-card-img" v-if="item.gallery?.length">
       <img :src="item.gallery[0]" :alt="`book-${item.id}`" />
     </div>
     <div class="book-card-content">

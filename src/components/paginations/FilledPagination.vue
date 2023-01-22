@@ -5,7 +5,7 @@
       class="pagination_item prev"
       @click="changePage(modelValue - 1)"
     >
-      <arrow-icon /> {{ $t("pagination.prev") }}
+      <arrow-icon /> Предыдущая
     </button>
     <button
       v-for="num in length"
@@ -21,13 +21,16 @@
       class="pagination_item next"
       @click="changePage(modelValue + 1)"
     >
-      {{ $t("pagination.next") }} <arrow-icon />
+      Следующая <arrow-icon />
     </button>
   </div>
 </template>
 
 <script>
+import ArrowIcon from "@/assets/img/icons/ArrowIcon.vue";
+
 export default {
+  components: { ArrowIcon },
   props: {
     length: {
       type: Number,

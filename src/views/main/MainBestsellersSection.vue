@@ -2,12 +2,17 @@
   <section class="bestseller-books-wrap">
     <h3 class="section-title">Хиты продаж</h3>
     <div class="bestseller-books-list">
-      <book-card :item="item" class="bestseller-books-list-item" />
-      <book-card :item="item" class="bestseller-books-list-item" />
-      <book-card :item="item" class="bestseller-books-list-item" />
+      <book-card
+        v-for="item in bestsellerBooksList"
+        :key="item.id"
+        :item="item"
+        class="bestseller-books-list-item"
+      />
     </div>
     <div class="all-books-btn-wrap">
-      <bordered-button> Каталог всех книг </bordered-button>
+      <router-link :to="{ name: 'books-catalog' }">
+        <bordered-button> Каталог всех книг </bordered-button>
+      </router-link>
     </div>
   </section>
 </template>
@@ -15,6 +20,7 @@
 <script>
 import BookCard from "@/components/cards/BookCard.vue";
 import BorderedButton from "@/components/buttons/BorderedButton.vue";
+import { getBooksByTag } from "@/data/firebase/booksApi";
 
 export default {
   name: "MainBestsellersSection",
@@ -24,22 +30,23 @@ export default {
   },
   data() {
     return {
-      item: {
-        id: "2922466",
-        title: "Вязание ХИТОМИ ШИДА, 250 узоров, 6 авторских моделей",
-        rating: 4.8,
-        price: 1808,
-        gallery: [
-          "https://firebasestorage.googleapis.com/v0/b/book-store-d36d0.appspot.com/o/books%2Fimages%2F2922466%2Fimg1.png?alt=media&token=e3b0da29-7842-486f-8f94-323582b11a3a",
-        ],
-      },
+      bestsellerBooksList: null,
     };
+  },
+  created() {
+    this.initData();
+  },
+  methods: {
+    async initData() {
+      this.bestsellerBooksList = await getBooksByTag("bestseller", 3);
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .bestseller-books-list {
+  margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
