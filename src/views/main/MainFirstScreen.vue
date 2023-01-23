@@ -1,6 +1,6 @@
 <template>
-  <div class="first-screen-wrap" v-if="newBook">
-    <div class="first-screen-content">
+  <div class="first-screen-wrap">
+    <div class="first-screen-content" v-if="newBook">
       <div class="first-screen-caption caption">Новый выпуск</div>
       <h2>{{ newBook.title }}</h2>
       <div class="first-screen-description">{{ newBook.shortDescription }}</div>
@@ -9,12 +9,15 @@
         <router-link :to="{ name: 'main' }" class="first-screen-actions-item">
           <bordered-button>Подробнее</bordered-button>
         </router-link>
-        <router-link :to="{ name: 'main' }" class="first-screen-actions-item">
+        <router-link
+          :to="{ name: 'books-catalog' }"
+          class="first-screen-actions-item"
+        >
           <bordered-button>Каталог</bordered-button>
         </router-link>
       </div>
     </div>
-    <div class="first-screen-img">
+    <div class="first-screen-img" v-if="newBook">
       <img :src="newBook.gallery[0]" alt="new release" />
     </div>
   </div>

@@ -3,7 +3,6 @@
     <div class="card_item" v-for="item in list" :key="item.id">
       <div class="img_wrap">
         <img v-if="item.image" :src="item.image" alt="img" />
-        <default-photo v-else />
         <div class="info_side left_info">
           <div
             v-for="info in structure.imgInfo.left"
@@ -114,14 +113,12 @@
 
 <script>
 import StarsRating from "@/components/other/StarsRating.vue";
-import DefaultPhoto from "@/assets/img/DefaultPhoto";
 
 import { isDark } from "@/services/methods/color";
 
 export default {
   components: {
     StarsRating,
-    DefaultPhoto,
   },
   props: {
     type: {

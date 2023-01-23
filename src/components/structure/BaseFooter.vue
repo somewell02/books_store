@@ -55,7 +55,7 @@ export default {
 <style lang="scss" scoped>
 .base-footer {
   background: var(--text-color);
-  margin-top: 60px;
+  margin-top: 120px;
 
   .footer-main {
     display: flex;

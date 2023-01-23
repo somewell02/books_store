@@ -4,7 +4,7 @@
       <main-first-screen />
       <main-new-books-section class="new-books-section" />
       <main-bestsellers-section class="bestsellers-section" />
-      <main-sales-section class="sales-section" />
+      <main-promotions-section class="sales-section" />
     </div>
   </base-layout>
 </template>
@@ -14,7 +14,7 @@ import BaseLayout from "@/layouts/BaseLayout.vue";
 import MainFirstScreen from "@/views/main/MainFirstScreen.vue";
 import MainNewBooksSection from "@/views/main/MainNewBooksSection.vue";
 import MainBestsellersSection from "@/views/main/MainBestsellersSection.vue";
-import MainSalesSection from "@/views/main/MainSalesSection.vue";
+import MainPromotionsSection from "@/views/main/MainPromotionsSection.vue";
 
 export default {
   data() {
@@ -22,7 +22,7 @@ export default {
   },
 
   components: {
-    MainSalesSection,
+    MainPromotionsSection,
     MainBestsellersSection,
     MainNewBooksSection,
     MainFirstScreen,
