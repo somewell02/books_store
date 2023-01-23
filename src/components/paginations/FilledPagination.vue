@@ -51,6 +51,10 @@ export default {
   methods: {
     changePage(num) {
       if (num >= 1 && num <= this.length && num !== this.modelValue) {
+        window.scrollTo({
+          top: 100,
+          behavior: "smooth",
+        });
         this.$emit("update:modelValue", num);
       }
     },

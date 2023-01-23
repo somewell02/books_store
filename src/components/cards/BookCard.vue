@@ -1,11 +1,17 @@
 <template>
   <div class="book-card-wrap">
     <div class="book-card-img" v-if="item.gallery?.length">
-      <img :src="item.gallery[0]" :alt="`book-${item.id}`" />
+      <router-link :to="{ name: 'book-page', params: { id: item.id } }">
+        <img :src="item.gallery[0]" :alt="`book-${item.id}`" />
+      </router-link>
     </div>
     <div class="book-card-content">
       <div class="book-card-info">
-        <div class="book-title">{{ item.title }}</div>
+        <div class="book-title">
+          <router-link :to="{ name: 'book-page', params: { id: item.id } }"
+            >{{ item.title }}
+          </router-link>
+        </div>
         <stars-rating class="book-rating" :rating="item.rating" />
       </div>
       <div class="book-card-add-to-cart">
@@ -59,6 +65,14 @@ export default {
     .book-card-info {
       flex-grow: 3;
       padding-right: 20px;
+
+      .book-title a {
+        color: var(--text-color);
+
+        &:hover {
+          color: var(--primary-color);
+        }
+      }
 
       .book-rating {
         margin-top: 10px;

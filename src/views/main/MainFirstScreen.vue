@@ -5,8 +5,13 @@
       <h2>{{ newBook.title }}</h2>
       <div class="first-screen-description">{{ newBook.shortDescription }}</div>
       <div class="first-screen-actions">
-        <filled-button class="first-screen-actions-item">Купить</filled-button>
-        <router-link :to="{ name: 'main' }" class="first-screen-actions-item">
+        <filled-button class="first-screen-actions-item">
+          В корзину
+        </filled-button>
+        <router-link
+          :to="{ name: 'book-page', params: { id: newBook.id } }"
+          class="first-screen-actions-item"
+        >
           <bordered-button>Подробнее</bordered-button>
         </router-link>
         <router-link

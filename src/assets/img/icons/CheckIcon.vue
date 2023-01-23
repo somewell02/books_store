@@ -21,6 +21,6 @@ export default {
   height: 16px;
 }
 .fill svg * {
-  fill: var(--secondary-color);
+  fill: var(--success-color);
 }
 </style>
