@@ -8,3 +8,12 @@
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  name: "BaseHeader",
+  created() {
+    this.$store.dispatch("cart/getItemsByIds");
+  },
+};
+</script>

@@ -21,9 +21,14 @@
         </router-link>
       </nav>
       <div class="right-menu-wrap">
-        <router-link to="">
-          <cart-icon />
-        </router-link>
+        <div class="cart-btn">
+          <router-link :to="{ name: 'cart' }">
+            <cart-icon />
+          </router-link>
+          <div v-if="cartItemsQuantity !== 0" class="cart-items-quantity">
+            {{ cartItemsQuantity }}
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -31,11 +36,17 @@
 
 <script>
 import CartIcon from "@/assets/img/icons/CartIcon.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "BaseHeader",
   components: {
     CartIcon,
+  },
+  computed: {
+    ...mapGetters({
+      cartItemsQuantity: "cart/getCartItemsQuantity",
+    }),
   },
 };
 </script>
@@ -70,6 +81,21 @@ export default {
 
         &:hover {
           color: var(--primary-color);
+        }
+      }
+    }
+
+    .right-menu-wrap {
+      .cart-btn {
+        position: relative;
+
+        .cart-items-quantity {
+          position: absolute;
+          left: 18px;
+          top: 18px;
+          color: var(--primary-color);
+          font-size: 12px;
+          font-weight: bold;
         }
       }
     }

@@ -9,6 +9,7 @@
             :key="book.id"
             :item="book"
             class="books-catalog-list-item"
+            @alert="openAlert"
           />
         </div>
         <filled-pagination
@@ -18,6 +19,7 @@
         />
       </div>
     </div>
+    <message-alert ref="alert"></message-alert>
   </base-layout>
 </template>
 
@@ -26,6 +28,7 @@ import BaseLayout from "@/layouts/BaseLayout.vue";
 import { getBooks } from "@/data/firebase/booksApi";
 import BookCard from "@/components/cards/BookCard.vue";
 import FilledPagination from "@/components/paginations/FilledPagination.vue";
+import MessageAlert from "@/components/popups/MessageAlert.vue";
 
 export default {
   data() {
@@ -39,6 +42,7 @@ export default {
     };
   },
   components: {
+    MessageAlert,
     FilledPagination,
     BookCard,
     BaseLayout,
@@ -66,6 +70,9 @@ export default {
       const books = await getBooks();
       this.booksList = books;
       this.pagination.length = Math.ceil(books.length / this.pagination.limit);
+    },
+    openAlert(type, text) {
+      this.$refs.alert.open(type, text);
     },
   },
 };

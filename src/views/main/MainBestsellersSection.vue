@@ -7,6 +7,7 @@
         :key="item.id"
         :item="item"
         class="bestseller-books-list-item"
+        @alert="(type, text) => $emit('alert', type, text)"
       />
     </div>
     <div class="all-books-btn-wrap">

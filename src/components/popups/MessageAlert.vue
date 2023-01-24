@@ -104,17 +104,17 @@ export default {
     display: flex;
     align-items: center;
     pointer-events: auto;
+    div {
+      color: white !important;
+    }
     &.information {
       background: var(--primary-color);
-      color: white;
     }
     &.error {
       background: var(--error-color);
-      color: white;
     }
     &.success {
       background: var(--success-color);
-      color: white;
     }
     .message_text {
       flex-grow: 3;

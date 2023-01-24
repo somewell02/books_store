@@ -7,6 +7,7 @@
         :key="item.id"
         :item="item"
         class="new-books-list-item"
+        @alert="(type, text) => $emit('alert', type, text)"
       />
     </div>
   </section>

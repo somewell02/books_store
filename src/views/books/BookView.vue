@@ -43,7 +43,11 @@
                 <div class="book-price">{{ book.price }} ₽</div>
                 <stars-rating :rating="book.rating" class="book-rating" />
               </div>
-              <filled-button v-if="isBookInStock" class="add-to-cart-btn">
+              <filled-button
+                v-if="isBookInStock"
+                class="add-to-cart-btn"
+                @click="addToCart"
+              >
                 Добавить в корзину
               </filled-button>
               <div class="book-is-in-stock">
@@ -61,6 +65,7 @@
         </div>
       </div>
     </div>
+    <message-alert ref="alert"></message-alert>
   </base-layout>
 </template>
 
@@ -71,10 +76,12 @@ import FilledButton from "@/components/buttons/FilledButton.vue";
 import CheckIcon from "@/assets/img/icons/CheckIcon.vue";
 import CloseIcon from "@/assets/img/icons/CloseIcon.vue";
 import StarsRating from "@/components/other/StarsRating.vue";
+import MessageAlert from "@/components/popups/MessageAlert.vue";
 
 export default {
   name: "BookView",
   components: {
+    MessageAlert,
     StarsRating,
     CloseIcon,
     CheckIcon,
@@ -107,6 +114,10 @@ export default {
   methods: {
     async initData() {
       this.book = await getBookById(this.bookId);
+    },
+    addToCart() {
+      this.$store.commit("cart/addCartItem", { id: this.bookId, ...this.book });
+      this.$refs.alert.open("success", "Книга добавлена в корзину");
     },
   },
 };

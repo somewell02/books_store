@@ -16,7 +16,7 @@
       </div>
       <div class="book-card-add-to-cart">
         <div class="book-price">{{ item.price }} ₽</div>
-        <add-to-cart-icon class="book-add-to-cart-icon" />
+        <add-to-cart-icon class="book-add-to-cart-icon" @click="addToCart" />
       </div>
     </div>
   </div>
@@ -32,11 +32,19 @@ export default {
     AddToCartIcon,
     StarsRating,
   },
-
   props: {
     item: {
       type: Object,
       required: true,
+    },
+  },
+  emits: {
+    alert: null,
+  },
+  methods: {
+    addToCart() {
+      this.$store.commit("cart/addCartItem", this.item);
+      this.$emit("alert", "success", "Книга добавлена в корзину");
     },
   },
 };

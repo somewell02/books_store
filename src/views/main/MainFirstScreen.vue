@@ -5,7 +5,7 @@
       <h2>{{ newBook.title }}</h2>
       <div class="first-screen-description">{{ newBook.shortDescription }}</div>
       <div class="first-screen-actions">
-        <filled-button class="first-screen-actions-item">
+        <filled-button class="first-screen-actions-item" @click="addToCart">
           В корзину
         </filled-button>
         <router-link
@@ -51,6 +51,10 @@ export default {
     async initData() {
       const result = await getBooksByTag("new", 1);
       this.newBook = result[0];
+    },
+    addToCart() {
+      this.$store.commit("cart/addCartItem", this.newBook);
+      this.$emit("alert", "success", "Книга добавлена в корзину");
     },
   },
 };
