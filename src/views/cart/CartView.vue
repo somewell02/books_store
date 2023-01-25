@@ -3,49 +3,52 @@
     <div class="main-content">
       <h3>Корзина</h3>
       <div class="cart-content-wrap">
-        <div class="cart-items-list">
-          <book-cart-card
-            v-for="item in getCartItems"
-            :key="item.item.id"
-            :item="item"
-            @alert="openAlert"
-          />
-        </div>
-        <div class="cart-total-wrap">
-          <div class="cart-total-content">
-            <div class="cart-total-list">
-              <div class="cart-total-list-item">
-                <div>
-                  {{
-                    `${getCartItemsQuantity} ${
-                      getCartItemsQuantity % 10 === 1 &&
-                      getCartItemsQuantity !== 11
-                        ? "книга"
-                        : getCartItemsQuantity % 10 < 5 &&
-                          getCartItemsQuantity % 10 !== 0 &&
-                          (getCartItemsQuantity < 5 ||
-                            getCartItemsQuantity > 15)
-                        ? "книги"
-                        : "книг"
-                    }`
-                  }}
+        <template v-if="getCartItemsQuantity === 0"> Корзина пуста. </template>
+        <template v-else>
+          <div class="cart-items-list">
+            <book-cart-card
+              v-for="item in getCartItems"
+              :key="item.item.id"
+              :item="item"
+              @alert="openAlert"
+            />
+          </div>
+          <div class="cart-total-wrap">
+            <div class="cart-total-content">
+              <div class="cart-total-list">
+                <div class="cart-total-list-item">
+                  <div>
+                    {{
+                      `${getCartItemsQuantity} ${
+                        getCartItemsQuantity % 10 === 1 &&
+                        getCartItemsQuantity !== 11
+                          ? "книга"
+                          : getCartItemsQuantity % 10 < 5 &&
+                            getCartItemsQuantity % 10 !== 0 &&
+                            (getCartItemsQuantity < 5 ||
+                              getCartItemsQuantity > 15)
+                          ? "книги"
+                          : "книг"
+                      }`
+                    }}
+                  </div>
+                  <div>{{ getCartTotal }} ₽</div>
                 </div>
-                <div>{{ getCartTotal }} ₽</div>
+                <div class="cart-total-list-item">
+                  <div>Доставка</div>
+                  <div>Бесплатно</div>
+                </div>
               </div>
-              <div class="cart-total-list-item">
-                <div>Доставка</div>
-                <div>Бесплатно</div>
+              <div class="cart-form">
+                <div class="cart-total-price">
+                  <div>Итого</div>
+                  <div>{{ getCartTotal }} ₽</div>
+                </div>
+                <filled-button>Перейти к оформлению</filled-button>
               </div>
-            </div>
-            <div class="cart-form">
-              <div class="cart-total-price">
-                <div>Итого</div>
-                <div>{{ getCartTotal }} ₽</div>
-              </div>
-              <filled-button>Перейти к оформлению</filled-button>
             </div>
           </div>
-        </div>
+        </template>
       </div>
     </div>
     <message-alert ref="alert"></message-alert>
