@@ -8,8 +8,8 @@
     <div class="book-card-content">
       <div class="book-card-info">
         <div class="book-title">
-          <router-link :to="{ name: 'book-page', params: { id: item.id } }"
-            >{{ item.title }}
+          <router-link :to="{ name: 'book-page', params: { id: item.id } }">
+            {{ item.title }}
           </router-link>
         </div>
         <stars-rating class="book-rating" :rating="item.rating" />

@@ -12,6 +12,12 @@ const cartModule = {
     getCartItemsQuantity(state) {
       return state.cartItems.reduce((sum, item) => sum + item.quantity, 0);
     },
+    getCartTotal(state) {
+      return state.cartItems.reduce(
+        (sum, item) => sum + item.quantity * item.item.price,
+        0
+      );
+    },
   },
   mutations: {
     addCartItem(state, cartItem) {

@@ -96,6 +96,7 @@ export default {
           color: var(--primary-color);
           font-size: 12px;
           font-weight: bold;
+          pointer-events: none;
         }
       }
     }
