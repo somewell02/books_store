@@ -43,7 +43,7 @@ textarea {
   @include custom-scroll;
   width: 100%;
   padding: 10px 20px;
-  min-height: 40px;
+  min-height: 80px;
   background: transparent;
   outline: none;
   border-radius: 5px;

@@ -14,8 +14,14 @@
       <div class="book-author">
         {{ item.item.author }}
       </div>
+      <template v-if="isCheckout">
+        <div class="book-quantity">Количество: {{ item.quantity }}</div>
+        <div class="book-total-price">
+          {{ item.item.price * item.quantity }} ₽
+        </div>
+      </template>
     </div>
-    <div class="book-cart-card-quantity-wrap">
+    <div v-if="!isCheckout" class="book-cart-card-quantity-wrap">
       <div class="book-cart-card-quantity">
         <bordered-button
           class="quantity-btn"
@@ -32,10 +38,10 @@
         </bordered-button>
       </div>
     </div>
-    <div class="book-cart-card-total-price">
+    <div v-if="!isCheckout" class="book-cart-card-total-price">
       {{ item.item.price * item.quantity }} ₽
     </div>
-    <div class="book-cart-card-actions">
+    <div v-if="!isCheckout" class="book-cart-card-actions">
       <div class="delete-card-item" @click="deleteItem">
         <delete-icon />
       </div>
@@ -58,6 +64,11 @@ export default {
     item: {
       type: Object,
       required: true,
+    },
+    isCheckout: {
+      type: Boolean,
+      required: false,
+      default: true,
     },
   },
   emits: {
@@ -113,6 +124,8 @@ export default {
 
   .book-cart-card-info {
     flex-grow: 3;
+    display: flex;
+    flex-direction: column;
 
     .book-title {
       font-size: 18px;
@@ -127,6 +140,11 @@ export default {
     }
 
     .book-author {
+      margin-top: 10px;
+      flex-grow: 3;
+    }
+
+    .book-total-price {
       margin-top: 10px;
     }
   }

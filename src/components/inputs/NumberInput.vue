@@ -6,7 +6,7 @@
 import BorderedInput from "./BorderedInput";
 
 export default {
-  name: "text-input",
+  name: "number-input",
   props: {
     modelValue: {
       type: Number,

@@ -10,7 +10,7 @@
 import { IMaskComponent } from "vue-imask";
 
 export default {
-  name: "text-input",
+  name: "mask-input",
   props: {
     modelValue: {
       type: String,

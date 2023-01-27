@@ -32,6 +32,11 @@ const routes = [
     component: () => import("../views/cart/CartView.vue"),
   },
   {
+    path: "/checkout",
+    name: "checkout",
+    component: () => import("../views/checkout/CheckoutView.vue"),
+  },
+  {
     path: "/admin",
     name: "admin",
     redirect: { name: "admin-orders" },

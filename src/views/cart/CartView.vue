@@ -44,7 +44,9 @@
                   <div>Итого</div>
                   <div>{{ getCartTotal }} ₽</div>
                 </div>
-                <filled-button>Перейти к оформлению</filled-button>
+                <filled-button @click="startCheckout">
+                  Перейти к оформлению
+                </filled-button>
               </div>
             </div>
           </div>
@@ -79,6 +81,9 @@ export default {
   methods: {
     openAlert(type, text) {
       this.$refs.alert.open(type, text);
+    },
+    startCheckout() {
+      this.$router.push({ name: "checkout" });
     },
   },
 };
