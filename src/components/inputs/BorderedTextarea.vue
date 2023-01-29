@@ -24,7 +24,7 @@ export default {
 
   computed: {
     inputClass() {
-      const colors = ["gray"];
+      const colors = ["gray", "primary"];
       if (this.color == null || !colors.includes(this.color)) return "gray";
       else return this.color;
     },
@@ -49,16 +49,24 @@ textarea {
   border-radius: 5px;
   font-size: 14px;
   line-height: 1.3;
+  color: var(--text-color);
   &.gray {
-    color: var(--text-color);
     border: 1px solid var(--input-color);
     &:focus {
       border: 2px solid var(--input-color);
-      padding: 9px 19px;
     }
-    &::placeholder {
-      color: var(--secondary-color);
+  }
+  &.primary {
+    border: 1px solid var(--primary-color);
+    &:focus {
+      border: 2px solid var(--primary-color);
     }
+  }
+  &:focus {
+    padding: 9px 19px;
+  }
+  &::placeholder {
+    color: var(--secondary-color);
   }
 }
 </style>

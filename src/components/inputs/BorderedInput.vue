@@ -15,7 +15,7 @@ export default {
 
   computed: {
     inputClass() {
-      const colors = ["gray"];
+      const colors = ["gray", "primary"];
       if (this.color == null || !colors.includes(this.color)) return "gray";
       else return this.color;
     },
@@ -37,6 +37,17 @@ input {
     border: 1px solid var(--input-color);
     &:focus {
       border: 2px solid var(--input-color);
+      padding: 0 19px;
+    }
+    &::placeholder {
+      color: var(--secondary-color);
+    }
+  }
+  &.primary {
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    &:focus {
+      border: 2px solid var(--primary-color);
       padding: 0 19px;
     }
     &::placeholder {

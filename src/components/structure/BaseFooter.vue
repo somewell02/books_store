@@ -23,11 +23,11 @@
       <div class="footer-contacts">
         <div class="footer-contacts-item place-info">
           <place-icon />
-          Саратов
+          {{ storeData.city }}
         </div>
         <div class="footer-contacts-item phone-info">
           <phone-icon />
-          +7 (951) 123-45-67
+          {{ storeData.phone }}
         </div>
       </div>
     </div>
@@ -42,12 +42,18 @@
 <script>
 import PlaceIcon from "@/assets/img/icons/PlaceIcon.vue";
 import PhoneIcon from "@/assets/img/icons/PhoneIcon.vue";
+import { phone, city } from "@/data/data";
 
 export default {
   name: "BaseFooter",
   components: {
     PhoneIcon,
     PlaceIcon,
+  },
+  computed: {
+    storeData() {
+      return { phone, city };
+    },
   },
 };
 </script>

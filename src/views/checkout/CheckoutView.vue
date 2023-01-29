@@ -15,19 +15,19 @@
                   <text-input
                     class="input-item column-1"
                     v-model="order.userName"
-                    placeholder="ФИО получателя"
+                    placeholder="ФИО получателя*"
                     required
                   />
-                  <text-input
+                  <email-input
                     class="input-item column-12"
                     v-model="order.userEmail"
-                    placeholder="E-mail"
+                    placeholder="E-mail*"
                     required
                   />
                   <text-input
                     class="input-item column-12"
                     v-model="order.userPhone"
-                    placeholder="Телефон"
+                    placeholder="Телефон*"
                     required
                   />
                 </div>
@@ -37,31 +37,31 @@
                     <text-input
                       class="input-item column-12"
                       v-model="order.address.city"
-                      placeholder="Город"
+                      placeholder="Город*"
                       required
                     />
                     <text-input
                       class="input-item column-12"
                       v-model="order.address.street"
-                      placeholder="Улица"
+                      placeholder="Улица*"
                       required
                     />
                     <text-input
                       class="input-item column-13"
                       v-model="order.address.home"
-                      placeholder="Дом"
+                      placeholder="Дом*"
                       required
                     />
                     <text-input
                       class="input-item column-13"
                       v-model="order.address.building"
-                      placeholder="Корпус"
+                      placeholder="Корпус*"
                       required
                     />
                     <text-input
                       class="input-item column-13"
                       v-model="order.address.flat"
-                      placeholder="Квартира"
+                      placeholder="Квартира*"
                       required
                     />
                     <text-input
@@ -156,6 +156,7 @@ import BorderedTextarea from "@/components/inputs/BorderedTextarea.vue";
 import RadioList from "@/components/inputs/RadioList.vue";
 import FilledButton from "@/components/buttons/FilledButton.vue";
 import { addOrder, orderPayments } from "@/data/firebase/ordersApi";
+import EmailInput from "@/components/inputs/EmailInput.vue";
 
 export default {
   data() {
@@ -178,6 +179,7 @@ export default {
     };
   },
   components: {
+    EmailInput,
     FilledButton,
     RadioList,
     BorderedTextarea,
