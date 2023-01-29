@@ -85,7 +85,7 @@
           "
           @click="this.$emit('view', item)"
         >
-          {{ $t("view") }}
+          Посмотреть
         </filled-button>
         <filled-button
           v-if="
@@ -94,7 +94,7 @@
           "
           @click="this.$emit('edit', item)"
         >
-          {{ $t("edit") }}
+          Редактировать
         </filled-button>
         <filled-button
           v-if="
@@ -104,7 +104,7 @@
           @click="this.$emit('delete', item)"
           color="secondary"
         >
-          {{ $t("delete") }}
+          Удалить
         </filled-button>
       </div>
     </div>

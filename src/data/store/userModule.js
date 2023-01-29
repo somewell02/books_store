@@ -1,8 +1,6 @@
 const userModule = {
   state: () => ({
-    user: {
-      name: "Name",
-    },
+    user: null,
   }),
   getters: {
     includesUpdate(state) {
@@ -20,23 +18,12 @@ const userModule = {
         ? state.user.role?.permissions?.includes("create")
         : false;
     },
-    includesChat(state) {
-      return state.user
-        ? state.user.role?.permissions?.includes("chat")
-        : false;
-    },
-    includesStats(state) {
-      return state.user
-        ? state.user.role?.permissions?.includes("stats")
-        : false;
-    },
   },
   mutations: {
     setUser(state, user) {
       state.user = user;
     },
   },
-  actions: {},
   namespaced: true,
 };
 

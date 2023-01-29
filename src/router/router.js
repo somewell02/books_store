@@ -44,7 +44,12 @@ const routes = [
   {
     path: "/admin",
     name: "admin",
-    redirect: { name: "admin-orders" },
+    redirect: { name: "admin-auth" },
+  },
+  {
+    path: "/admin/auth",
+    name: "admin-auth",
+    component: () => import("../views/dashboard/auth/AuthView.vue"),
   },
   {
     path: "/admin/orders",

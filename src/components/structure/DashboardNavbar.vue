@@ -29,7 +29,7 @@ import LogoutIcon from "@/assets/img/icons/LogoutIcon";
 import ConfirmationPopup from "@/components/popups/ConfirmationPopup.vue";
 import ListIcon from "@/assets/img/icons/ListIcon.vue";
 import UsersIcon from "@/assets/img/icons/UsersIcon.vue";
-// import { logout } from "@/data/firebase/auth";
+import { logout } from "@/data/firebase/auth";
 export default {
   name: "DashboardNavbar",
   components: {
@@ -42,12 +42,12 @@ export default {
   },
   methods: {
     async logout() {
-      //   const popupResult = await this.$refs.confirmation.open(
-      //     this.$t("auth.confirmLogout")
-      //   );
-      //   if (popupResult) {
-      //     logout();
-      //   }
+      const popupResult = await this.$refs.confirmation.open(
+        "Вы уверены что хотите выйти?"
+      );
+      if (popupResult) {
+        logout();
+      }
     },
   },
 };

@@ -60,7 +60,7 @@
             v-else-if="row[title.id] && title.type === 'bool'"
             class="content bool"
           >
-            {{ row[title.id] ? $t("yes") : $t("no") }}
+            {{ row[title.id] ? "Да" : "Нет" }}
           </div>
           <div
             v-else-if="row[title.id] && title.type === 'array'"

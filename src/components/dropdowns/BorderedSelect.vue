@@ -74,7 +74,7 @@ export default {
         return this.options.find((option) => option.id === this.modelValue)
           .title;
       } else {
-        return this.defaultTitle ?? this.$t("chooseValue");
+        return this.defaultTitle ?? "Выберете значение";
       }
     },
   },

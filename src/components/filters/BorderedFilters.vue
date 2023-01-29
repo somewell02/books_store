@@ -9,7 +9,7 @@
       />
     </div>
     <bordered-button class="clear_btn" @click="clearFilters">
-      <reset-icon /> {{ $t("reset") }}
+      <reset-icon /> Сбросить
     </bordered-button>
   </div>
 </template>

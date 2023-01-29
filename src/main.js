@@ -9,6 +9,7 @@ import Directives from "./services/directives/directives";
 import "./assets/scss/index.scss";
 
 import i18n from "./i18n";
+import { getAuthUser } from "@/data/firebase/auth";
 
 const app = createApp(App);
 
@@ -17,3 +18,5 @@ Directives.forEach((directive) => {
 });
 
 app.use(store).use(router).use(i18n).mount("#app");
+
+getAuthUser();
