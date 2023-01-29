@@ -61,7 +61,7 @@ const routes = [
     path: "/admin/users",
     name: "admin-users",
     meta: { title: "Пользователи" },
-    component: () => import("../views/dashboard/orders/OrdersView.vue"),
+    component: () => import("../views/dashboard/users/UsersView.vue"),
   },
 ];
 

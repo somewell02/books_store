@@ -14,10 +14,10 @@
       </div>
     </div>
     <spacing-bordered-table
-      class="orders-table"
-      v-if="ordersList && modifiedOrdersList().length > 0"
+      class="users-table"
+      v-if="usersList && modifiedUsersList().length > 0"
       :titles="tableInfo.titles"
-      :rows="modifiedOrdersList()"
+      :rows="modifiedUsersList()"
       :actions="tableInfo.actions"
     />
     <div class="pagination-wrap">
@@ -37,20 +37,19 @@
 import DashboardLayout from "@/layouts/DashboardLayout.vue";
 import BorderedSelect from "@/components/dropdowns/BorderedSelect.vue";
 
-import { tableInfo, sortInfo, searchInfo } from "./ordersConstants.js";
-import { getOrders, orderStatuses } from "@/data/firebase/ordersApi";
+import { tableInfo, sortInfo, searchInfo } from "./usersConstants.js";
 import { paginate, recordsCount, search, sort } from "@/services/methods/list";
 import SpacingBorderedTable from "@/components/lists/SpacingBorderedTable.vue";
 import MessageAlert from "@/components/popups/MessageAlert.vue";
 import FilledPagination from "@/components/paginations/FilledPagination.vue";
 import SearchInput from "@/components/inputs/SearchInput.vue";
-import { msToDayMonthYear } from "@/services/methods/datetime";
+import { getUsers } from "@/data/firebase/usersApi";
 
 export default {
   name: "OrdersView",
   data() {
     return {
-      ordersList: null,
+      usersList: null,
       search: "",
       sort: "default",
       pagination: {
@@ -85,43 +84,33 @@ export default {
   },
   methods: {
     async initData() {
-      const orders = await getOrders();
-      this.ordersList = orders;
-      this.pagination.length = Math.ceil(orders.length / this.pagination.limit);
+      const users = await getUsers();
+      this.usersList = users;
+      this.pagination.length = Math.ceil(users.length / this.pagination.limit);
     },
-    modifiedOrdersList() {
-      if (!this.ordersList?.length) return [];
+    modifiedUsersList() {
+      if (!this.usersList?.length) return [];
 
-      let orders = Object.assign(this.ordersList);
+      let users = Object.assign(this.usersList);
 
-      orders.forEach((order) => {
-        order.createdDateDisplay = order.createdDate
-          ? msToDayMonthYear(order.createdDate.seconds * 1000)
-          : "-";
+      if (this.search) users = search(users, this.searchInfo, this.search);
 
-        order.statusDisplay = order.status
-          ? orderStatuses.find((item) => item.id === order.status).title
-          : "-";
-      });
+      if (this.sort !== "default") users = sort(users, this.sort);
 
-      if (this.search) orders = search(orders, this.searchInfo, this.search);
+      const ordersLength = users.length;
 
-      if (this.sort !== "default") orders = sort(orders, this.sort);
-
-      const ordersLength = orders.length;
-
-      orders = paginate(orders, this.pagination);
+      users = paginate(users, this.pagination);
 
       this.dataCount = recordsCount(this.pagination, ordersLength);
 
-      return orders;
+      return users;
     },
     openAlert(type, text) {
       this.$refs.alert.open(type, text);
     },
   },
   watch: {
-    ordersList(newValue) {
+    usersList(newValue) {
       if (newValue && newValue.length === 0) {
         this.dataCount = "Заказов не найдено";
       }
