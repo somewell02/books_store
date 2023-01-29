@@ -1,7 +1,7 @@
 <template>
   <base-layout>
     <div class="main-content">
-      <h3>Заказ</h3>
+      <h3>Заказ №{{ orderId.slice(0, 6) }}</h3>
       <div v-if="isLoaded" class="order-content-wrap">
         <div class="order-info-wrap">
           <div class="thanks-for-order">

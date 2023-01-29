@@ -38,12 +38,13 @@ import DashboardLayout from "@/layouts/DashboardLayout.vue";
 import BorderedSelect from "@/components/dropdowns/BorderedSelect.vue";
 
 import { tableInfo, sortInfo, searchInfo } from "./ordersConstants.js";
-import { getOrders } from "@/data/firebase/ordersApi";
+import { getOrders, orderStatuses } from "@/data/firebase/ordersApi";
 import { paginate, recordsCount, search, sort } from "@/services/methods/list";
 import SpacingBorderedTable from "@/components/lists/SpacingBorderedTable.vue";
 import MessageAlert from "@/components/popups/MessageAlert.vue";
 import FilledPagination from "@/components/paginations/FilledPagination.vue";
 import SearchInput from "@/components/inputs/SearchInput.vue";
+import { msToDayMonthYear } from "@/services/methods/datetime";
 
 export default {
   name: "OrdersView",
@@ -92,6 +93,16 @@ export default {
       if (!this.ordersList?.length) return [];
 
       let orders = Object.assign(this.ordersList);
+
+      orders.forEach((order) => {
+        order.createdDateDisplay = order.createdDate
+          ? msToDayMonthYear(order.createdDate.seconds * 1000)
+          : "-";
+
+        order.statusDisplay = order.status
+          ? orderStatuses.find((item) => item.id === order.status).title
+          : "-";
+      });
 
       if (this.search) orders = search(orders, this.searchInfo, this.search);
 

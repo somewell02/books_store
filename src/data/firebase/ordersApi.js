@@ -42,3 +42,10 @@ export const orderPayments = [
     title: "Банковский перевод для юридических лиц",
   },
 ];
+
+export const orderStatuses = [
+  { id: "in-processing", title: "В обработке" },
+  { id: "confirmed", title: "Подтвержден" },
+  { id: "in-delivery", title: "Получен службой доставки" },
+  { id: "received", title: "Получен клиентом" },
+];

@@ -108,6 +108,8 @@ export default {
   min-width: 150px;
   .selected_item {
     width: 100%;
+    color: var(--text-color);
+    border-color: var(--input-color);
     @include flex-between;
     .icon {
       width: 12px;

@@ -3,11 +3,16 @@ export const tableInfo = {
     {
       id: "id",
       name: "ID",
-      width: 25,
+      width: 20,
     },
     {
-      id: "status",
+      id: "statusDisplay",
       name: "Статус",
+      width: 15,
+    },
+    {
+      id: "createdDateDisplay",
+      name: "Дата",
       width: 15,
     },
     {
@@ -23,7 +28,7 @@ export const tableInfo = {
     {
       id: "totalPrice",
       name: "Итоговая стоимость",
-      width: 10,
+      width: 14,
       type: "price",
       unit: "₽",
     },

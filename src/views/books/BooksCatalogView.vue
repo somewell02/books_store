@@ -2,6 +2,19 @@
   <base-layout>
     <div class="main-content">
       <h3>Книги</h3>
+      <div class="list-modifications">
+        <div class="sorts-wrap">
+          <bordered-select
+            v-model="sort"
+            :options="sortInfo.options"
+            prefix="Сортировать:"
+            dropdownSide="left"
+          />
+        </div>
+        <div class="search-wrap">
+          <search-input v-model="search" />
+        </div>
+      </div>
       <div class="books-catalog-wrap">
         <div class="books-catalog-list">
           <book-card
@@ -29,12 +42,17 @@ import { getBooks } from "@/data/firebase/booksApi";
 import BookCard from "@/components/cards/BookCard.vue";
 import FilledPagination from "@/components/paginations/FilledPagination.vue";
 import MessageAlert from "@/components/popups/MessageAlert.vue";
-import { paginate } from "@/services/methods/list";
+import { paginate, search, sort } from "@/services/methods/list";
+import BorderedSelect from "@/components/dropdowns/BorderedSelect.vue";
+import SearchInput from "@/components/inputs/SearchInput.vue";
+import { sortInfo, searchInfo } from "./booksConstants";
 
 export default {
   data() {
     return {
       booksList: null,
+      search: "",
+      sort: "default",
       pagination: {
         page: 1,
         limit: 12,
@@ -43,6 +61,8 @@ export default {
     };
   },
   components: {
+    SearchInput,
+    BorderedSelect,
     MessageAlert,
     FilledPagination,
     BookCard,
@@ -52,10 +72,20 @@ export default {
     this.initData();
   },
   computed: {
+    sortInfo() {
+      return sortInfo;
+    },
+    searchInfo() {
+      return searchInfo;
+    },
     modifiedBooksList() {
       if (!this.booksList?.length) return [];
 
-      let books = Object.assign(this.booksList);
+      let books = JSON.parse(JSON.stringify(this.booksList));
+
+      if (this.search) books = search(books, this.searchInfo, this.search);
+
+      if (this.sort !== "default") books = sort(books, this.sort);
 
       books = paginate(books, this.pagination);
 
@@ -72,6 +102,20 @@ export default {
       this.$refs.alert.open(type, text);
     },
   },
+  watch: {
+    sort: {
+      handler() {
+        this.pagination.page = 1;
+      },
+      deep: true,
+    },
+    search: {
+      handler() {
+        this.pagination.page = 1;
+      },
+      deep: true,
+    },
+  },
 };
 </script>
 
@@ -83,8 +127,13 @@ export default {
     text-align: center;
   }
 
-  .books-catalog-wrap {
+  .list-modifications {
     margin-top: 40px;
+    @include flex-between;
+  }
+
+  .books-catalog-wrap {
+    margin-top: 20px;
 
     .books-catalog-list {
       display: grid;
