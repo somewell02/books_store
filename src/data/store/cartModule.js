@@ -64,6 +64,10 @@ const cartModule = {
     setCart(state, cartItems) {
       state.cartItems = cartItems;
     },
+    clearCart(state) {
+      state.cartItems = [];
+      setCart([]);
+    },
   },
   actions: {
     async getItemsByIds(context) {

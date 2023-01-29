@@ -68,7 +68,7 @@ export default {
     isCheckout: {
       type: Boolean,
       required: false,
-      default: true,
+      default: false,
     },
   },
   emits: {

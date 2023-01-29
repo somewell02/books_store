@@ -37,6 +37,11 @@ const routes = [
     component: () => import("../views/checkout/CheckoutView.vue"),
   },
   {
+    path: "/order/:id",
+    name: "order-page",
+    component: () => import("../views/order/OrderView.vue"),
+  },
+  {
     path: "/admin",
     name: "admin",
     redirect: { name: "admin-orders" },

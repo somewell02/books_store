@@ -14,19 +14,19 @@
                 <div class="form-block-inputs">
                   <text-input
                     class="input-item column-1"
-                    v-model="order.name"
+                    v-model="order.userName"
                     placeholder="ФИО получателя"
                     required
                   />
                   <text-input
                     class="input-item column-12"
-                    v-model="order.email"
+                    v-model="order.userEmail"
                     placeholder="E-mail"
                     required
                   />
                   <text-input
                     class="input-item column-12"
-                    v-model="order.phone"
+                    v-model="order.userPhone"
                     placeholder="Телефон"
                     required
                   />
@@ -79,17 +79,7 @@
                     class="input-item column-1"
                     name="payment"
                     v-model="order.payment"
-                    :options="[
-                      { id: 'bank-card', title: 'Картой на сайте' },
-                      {
-                        id: 'upon-receipt',
-                        title: 'Наличными или картой при получении',
-                      },
-                      {
-                        id: 'bank-transfer',
-                        title: 'Банковский перевод для юридических лиц',
-                      },
-                    ]"
+                    :options="orderPayments"
                   />
                 </div>
               </div>
@@ -158,21 +148,22 @@
 <script>
 import BaseLayout from "@/layouts/BaseLayout.vue";
 import BookCartCard from "@/components/cards/BookCartCard.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import MessageAlert from "@/components/popups/MessageAlert.vue";
 import FormLayout from "@/layouts/FormLayout.vue";
 import TextInput from "@/components/inputs/TextInput.vue";
 import BorderedTextarea from "@/components/inputs/BorderedTextarea.vue";
 import RadioList from "@/components/inputs/RadioList.vue";
 import FilledButton from "@/components/buttons/FilledButton.vue";
+import { addOrder, orderPayments } from "@/data/firebase/ordersApi";
 
 export default {
   data() {
     return {
       order: {
-        name: "",
-        email: "",
-        phone: "",
+        userName: "",
+        userEmail: "",
+        userPhone: "",
         address: {
           city: "",
           street: "",
@@ -202,13 +193,30 @@ export default {
       getCartTotal: "cart/getCartTotal",
       getCartItemsQuantity: "cart/getCartItemsQuantity",
     }),
+    orderPayments() {
+      return orderPayments;
+    },
   },
   methods: {
+    ...mapMutations({
+      clearCart: "cart/clearCart",
+    }),
     openAlert(type, text) {
       this.$refs.alert.open(type, text);
     },
     submitCheckout() {
-      console.log("submit");
+      addOrder({
+        ...this.order,
+        totalPrice: this.getCartTotal,
+        items: this.getCartItems.map((item) => ({
+          itemId: item.item.id,
+          quantity: item.quantity,
+          price: item.item.price * item.quantity,
+        })),
+      }).then((res) => {
+        this.clearCart();
+        this.$router.push({ name: "order-page", params: { id: res.id } });
+      });
     },
   },
 };
