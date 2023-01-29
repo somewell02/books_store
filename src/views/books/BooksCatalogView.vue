@@ -29,6 +29,7 @@ import { getBooks } from "@/data/firebase/booksApi";
 import BookCard from "@/components/cards/BookCard.vue";
 import FilledPagination from "@/components/paginations/FilledPagination.vue";
 import MessageAlert from "@/components/popups/MessageAlert.vue";
+import { paginate } from "@/services/methods/list";
 
 export default {
   data() {
@@ -56,11 +57,7 @@ export default {
 
       let books = Object.assign(this.booksList);
 
-      books = books.filter(
-        (book, bookIndex) =>
-          bookIndex >= (this.pagination.page - 1) * this.pagination.limit &&
-          bookIndex < this.pagination.page * this.pagination.limit
-      );
+      books = paginate(books, this.pagination);
 
       return books;
     },

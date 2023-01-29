@@ -1,5 +1,5 @@
 <template>
-  <div class="spacing_bordered_table">
+  <div class="spacing-bordered-table">
     <div class="titles" v-if="showTitles">
       <div
         v-for="title in titles"
@@ -93,14 +93,14 @@
               (actions.includes('edit') &&
                 !$store.getters['user/includesUpdate'])
             "
-            class="action_btn"
+            class="action-btn"
             @click="this.$emit('view', row)"
           />
           <edit-icon
             v-if="
               actions.includes('edit') && $store.getters['user/includesUpdate']
             "
-            class="action_btn"
+            class="action-btn"
             @click="this.$emit('edit', row)"
           />
           <delete-icon
@@ -108,7 +108,7 @@
               actions.includes('delete') &&
               $store.getters['user/includesDelete']
             "
-            class="action_btn"
+            class="action-btn"
             @click="this.$emit('delete', row)"
           />
         </div>
@@ -172,7 +172,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.spacing_bordered_table {
+.spacing-bordered-table {
   font-size: 14px;
   font-weight: 400;
   .titles {
@@ -228,7 +228,7 @@ export default {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      .action_btn {
+      .action-btn {
         display: flex;
         align-items: center;
         cursor: pointer;
@@ -249,7 +249,7 @@ export default {
 </style>
 
 <style lang="scss">
-.action_btn {
+.action-btn {
   &.icon.fill * {
     fill: var(--primary-color);
   }

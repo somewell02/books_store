@@ -4,9 +4,13 @@
       <img src="@/assets/img/logo.svg" alt="logo" />
     </header>
     <nav class="main-menu">
-      <router-link-icon :to="{ name: 'main' }">
+      <router-link-icon :to="{ name: 'admin-orders' }">
         <list-icon />
         Заказы
+      </router-link-icon>
+      <router-link-icon :to="{ name: 'admin-users' }">
+        <users-icon />
+        Пользователи
       </router-link-icon>
       <div class="hr"></div>
       <icon-button @click="logout">
@@ -24,10 +28,12 @@ import IconButton from "@/components/buttons/IconButton";
 import LogoutIcon from "@/assets/img/icons/LogoutIcon";
 import ConfirmationPopup from "@/components/popups/ConfirmationPopup.vue";
 import ListIcon from "@/assets/img/icons/ListIcon.vue";
+import UsersIcon from "@/assets/img/icons/UsersIcon.vue";
 // import { logout } from "@/data/firebase/auth";
 export default {
   name: "DashboardNavbar",
   components: {
+    UsersIcon,
     ListIcon,
     RouterLinkIcon,
     IconButton,

@@ -15,8 +15,9 @@
 
 <script>
 import PopupWrap from "./PopupWrap.vue";
+import FilledButton from "@/components/buttons/FilledButton.vue";
 export default {
-  components: { PopupWrap },
+  components: { FilledButton, PopupWrap },
   name: "confirmation-popup",
 
   data() {

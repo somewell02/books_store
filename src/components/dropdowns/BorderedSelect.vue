@@ -24,8 +24,10 @@
 
 <script>
 import BorderedButton from "@/components/buttons/BorderedButton.vue";
+import ArrowIcon from "@/assets/img/icons/ArrowIcon.vue";
 
 export default {
+  name: "BorderedSelect",
   data() {
     return {
       isActive: false,
@@ -33,6 +35,7 @@ export default {
   },
 
   components: {
+    ArrowIcon,
     BorderedButton,
   },
 

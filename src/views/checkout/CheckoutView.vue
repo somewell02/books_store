@@ -207,6 +207,7 @@ export default {
     submitCheckout() {
       addOrder({
         ...this.order,
+        status: "",
         totalPrice: this.getCartTotal,
         items: this.getCartItems.map((item) => ({
           itemId: item.item.id,

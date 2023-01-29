@@ -50,7 +50,13 @@ const routes = [
     path: "/admin/orders",
     name: "admin-orders",
     meta: { title: "Заказы" },
-    component: () => import("../views/dashboard/OrdersView.vue"),
+    component: () => import("../views/dashboard/orders/OrdersView.vue"),
+  },
+  {
+    path: "/admin/users",
+    name: "admin-users",
+    meta: { title: "Пользователи" },
+    component: () => import("../views/dashboard/orders/OrdersView.vue"),
   },
 ];
 
