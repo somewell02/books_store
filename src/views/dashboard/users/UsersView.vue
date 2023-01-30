@@ -44,12 +44,14 @@ import MessageAlert from "@/components/popups/MessageAlert.vue";
 import FilledPagination from "@/components/paginations/FilledPagination.vue";
 import SearchInput from "@/components/inputs/SearchInput.vue";
 import { getUsers } from "@/data/firebase/usersApi";
+import { getUserRoles } from "@/data/firebase/userRolesApi";
 
 export default {
   name: "OrdersView",
   data() {
     return {
       usersList: null,
+      rolesList: null,
       search: "",
       sort: "default",
       pagination: {
@@ -87,11 +89,18 @@ export default {
       const users = await getUsers();
       this.usersList = users;
       this.pagination.length = Math.ceil(users.length / this.pagination.limit);
+      this.rolesList = await getUserRoles();
     },
     modifiedUsersList() {
-      if (!this.usersList?.length) return [];
+      if (!this.usersList?.length || !this.rolesList) return [];
 
       let users = Object.assign(this.usersList);
+
+      users.forEach((user) => {
+        user.roleDisplay = this.rolesList.find(
+          (item) => item.id === user.role
+        ).title;
+      });
 
       if (this.search) users = search(users, this.searchInfo, this.search);
 

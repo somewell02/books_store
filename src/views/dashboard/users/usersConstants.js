@@ -3,22 +3,27 @@ export const tableInfo = {
     {
       id: "id",
       name: "ID",
-      width: 20,
+      width: 28,
     },
     {
       id: "name",
       name: "ФИО",
+      width: 20,
+    },
+    {
+      id: "roleDisplay",
+      name: "Тип доступа",
       width: 15,
     },
     {
       id: "email",
       name: "E-mail пользователя",
-      width: 18,
+      width: 20,
     },
     {
       id: "phone",
       name: "Телефон",
-      width: 18,
+      width: 17,
     },
   ],
   actions: [],

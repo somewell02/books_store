@@ -18,6 +18,7 @@
             Оплата и доставка
           </router-link>
           <router-link :to="{ name: 'feedback' }"> Обатная связь </router-link>
+          <router-link :to="{ name: 'admin' }"> Администратору </router-link>
         </nav>
       </div>
       <div class="footer-contacts">
