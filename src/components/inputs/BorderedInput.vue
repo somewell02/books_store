@@ -12,7 +12,6 @@ export default {
       required: false,
     },
   },
-
   computed: {
     inputClass() {
       const colors = ["gray", "primary"];

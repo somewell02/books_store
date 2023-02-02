@@ -3,7 +3,7 @@
     type="text"
     :value="modelValue"
     @input="updateInput"
-    v-mask="Array(maxLength).fill('#').join('')"
+    v-mask="'+7 (###) ###-##-##'"
   />
 </template>
 
@@ -12,16 +12,11 @@ import BorderedInput from "./BorderedInput";
 import { mask } from "vue-the-mask";
 
 export default {
-  name: "number-input",
+  name: "phone-input",
   props: {
     modelValue: {
       type: String,
       required: true,
-    },
-    maxLength: {
-      type: Number,
-      required: false,
-      default: 1000,
     },
   },
   components: {

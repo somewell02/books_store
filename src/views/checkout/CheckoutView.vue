@@ -12,10 +12,11 @@
               <div class="form-block">
                 <h4>Контактная информация</h4>
                 <div class="form-block-inputs">
-                  <text-input
+                  <only-text-input
                     class="input-item column-1"
                     v-model="order.userName"
                     placeholder="ФИО получателя*"
+                    :max-length="64"
                     required
                   />
                   <email-input
@@ -24,7 +25,7 @@
                     placeholder="E-mail*"
                     required
                   />
-                  <text-input
+                  <phone-input
                     class="input-item column-12"
                     v-model="order.userPhone"
                     placeholder="Телефон*"
@@ -40,16 +41,18 @@
                       placeholder="Город*"
                       required
                     />
-                    <text-input
+                    <only-text-input
                       class="input-item column-12"
                       v-model="order.address.street"
                       placeholder="Улица*"
+                      :max-length="64"
                       required
                     />
-                    <text-input
+                    <number-input
                       class="input-item column-13"
                       v-model="order.address.home"
                       placeholder="Дом*"
+                      :max-length="6"
                       required
                     />
                     <text-input
@@ -58,10 +61,11 @@
                       placeholder="Корпус*"
                       required
                     />
-                    <text-input
+                    <number-input
                       class="input-item column-13"
                       v-model="order.address.flat"
                       placeholder="Квартира*"
+                      :max-length="6"
                       required
                     />
                     <text-input
@@ -157,6 +161,9 @@ import RadioList from "@/components/inputs/RadioList.vue";
 import FilledButton from "@/components/buttons/FilledButton.vue";
 import { addOrder, orderPayments } from "@/data/firebase/ordersApi";
 import EmailInput from "@/components/inputs/EmailInput.vue";
+import OnlyTextInput from "@/components/inputs/OnlyTextInput.vue";
+import NumberInput from "@/components/inputs/NumberInput.vue";
+import PhoneInput from "@/components/inputs/PhoneInput.vue";
 
 export default {
   data() {
@@ -179,6 +186,9 @@ export default {
     };
   },
   components: {
+    PhoneInput,
+    NumberInput,
+    OnlyTextInput,
     EmailInput,
     FilledButton,
     RadioList,
