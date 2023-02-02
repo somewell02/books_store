@@ -12,6 +12,10 @@
         <users-icon />
         Пользователи
       </router-link-icon>
+      <router-link-icon :to="{ name: 'admin-feedback' }">
+        <users-icon />
+        Обратная связь
+      </router-link-icon>
       <div class="hr"></div>
       <icon-button @click="logout">
         <logout-icon />

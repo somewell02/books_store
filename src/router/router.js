@@ -58,6 +58,12 @@ const routes = [
     component: () => import("../views/dashboard/orders/OrdersView.vue"),
   },
   {
+    path: "/admin/feedback",
+    name: "admin-feedback",
+    meta: { title: "Обратная связь" },
+    component: () => import("../views/dashboard/feedback/FeedbackView.vue"),
+  },
+  {
     path: "/admin/users",
     name: "admin-users",
     meta: { title: "Пользователи" },
