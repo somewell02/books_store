@@ -1,14 +1,14 @@
 <template>
   <bordered-filter-item-wrap :dropdownSide="dropdownSide" :id="filter.id">
     <template v-slot:title>
-      <div class="title_text" :class="{ selected: this.modelValue.length > 0 }">
+      <div class="title-text" :class="{ selected: this.modelValue.length > 0 }">
         {{ filterTitle }}
       </div>
     </template>
     <template v-slot:options>
       <div class="options">
         <button
-          class="option_item"
+          class="option-item"
           v-for="option in filter.options"
           :key="option.id"
           @click="selectOption(option)"
@@ -80,14 +80,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.title_text {
+.title-text {
   pointer-events: none;
   &.selected {
     color: var(--primary-color);
     font-weight: 500;
   }
 }
-.option_item {
+.option-item {
   cursor: pointer;
   display: flex;
   width: 100%;

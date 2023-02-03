@@ -1,21 +1,23 @@
 <template>
-  <div class="filter_item">
+  <div class="filter-item">
     <bordered-button
-      class="filter_title"
-      @click="isOpen = !isOpen"
+      color="gray"
+      class="filter-title"
       :class="titleClass"
+      @click="isOpen = !isOpen"
     >
       <slot class="text" name="title" />
       <arrow-icon />
     </bordered-button>
-    <bordered-div class="options_wrap" :class="dropdownSide" v-if="isOpen">
+    <div class="options-wrap" :class="dropdownSide" v-if="isOpen">
       <slot name="options" />
-    </bordered-div>
+    </div>
   </div>
 </template>
 
 <script>
 import BorderedButton from "@/components/buttons/BorderedButton.vue";
+import ArrowIcon from "@/assets/img/icons/ArrowIcon.vue";
 
 export default {
   data() {
@@ -25,6 +27,7 @@ export default {
   },
 
   components: {
+    ArrowIcon,
     BorderedButton,
   },
 
@@ -51,8 +54,8 @@ export default {
   computed: {
     titleClass() {
       return this.isOpen
-        ? "active filter_title_" + this.id
-        : "filter_title_" + this.id;
+        ? "active filter-title-" + this.id
+        : "filter-title-" + this.id;
     },
   },
 
@@ -60,8 +63,8 @@ export default {
     handleMouseClick(e) {
       if (
         this.isOpen &&
-        !e.target.classList.contains("filter_title_" + this.id) &&
-        !e.target.classList.contains("option_item")
+        !e.target.classList.contains("filter-title-" + this.id) &&
+        !e.target.classList.contains("option-item")
       ) {
         this.isOpen = false;
       }
@@ -71,10 +74,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.filter_item {
+.filter-item {
   position: relative;
   min-width: 150px;
-  .filter_title {
+  .filter-title {
     width: 100%;
     @include flex-between;
     border-radius: 0;
@@ -94,8 +97,10 @@ export default {
       }
     }
   }
-  .options_wrap {
+  .options-wrap {
     position: absolute;
+    outline: 1px solid var(--border-color);
+    border-radius: 5px;
     top: 130%;
     top: calc(100% + 7px);
     &.left {

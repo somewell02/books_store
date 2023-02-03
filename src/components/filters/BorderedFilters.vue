@@ -1,14 +1,14 @@
 <template>
-  <div class="filters_wrap">
-    <div class="filters_icon"><filter-icon /></div>
-    <div class="filter_item_wrap" v-for="filter in filters" :key="filter.id">
+  <div class="filters-wrap">
+    <div class="filters-icon"><filter-icon /></div>
+    <div class="filter-item-wrap" v-for="filter in filters" :key="filter.id">
       <checkbox-filter-item
         v-if="filter.type == 'checkbox'"
         v-model="filter.values"
         :filter="filter"
       />
     </div>
-    <bordered-button class="clear_btn" @click="clearFilters">
+    <bordered-button class="clear-btn" color="gray" @click="clearFilters">
       <reset-icon /> Сбросить
     </bordered-button>
   </div>
@@ -46,17 +46,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.filters_wrap {
+.filters-wrap {
   display: flex;
   z-index: 10;
-  .filters_icon {
+  .filters-icon {
     height: 40px;
     padding: 12px 20px;
     border-radius: 5px 0 0 5px;
     border: solid var(--border-color);
     border-width: 1px 0 1px 1px;
   }
-  .clear_btn {
+  .clear-btn {
     @include flex-center;
     border-radius: 0 5px 5px 0;
     &:hover {

@@ -8,6 +8,30 @@ export const sortInfo = {
   ],
 };
 
+export const filters = [
+  {
+    id: "theme",
+    type: "checkbox",
+    title: "Тематика",
+    options: [],
+    values: [],
+  },
+  {
+    id: "author",
+    type: "checkbox",
+    title: "Автор",
+    options: [],
+    values: [],
+  },
+  {
+    id: "binding",
+    type: "checkbox",
+    title: "Переплет",
+    options: [],
+    values: [],
+  },
+];
+
 export const searchInfo = {
   fields: [
     { id: "author" },

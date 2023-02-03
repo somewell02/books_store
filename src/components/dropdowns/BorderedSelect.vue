@@ -2,8 +2,9 @@
   <div class="bordered_select">
     <bordered-button
       class="selected_item"
-      @click="disabled ? null : (isActive = !isActive)"
       :class="{ active: isActive }"
+      color="gray"
+      @click="disabled ? null : (isActive = !isActive)"
     >
       {{ prefix ? prefix + " " + selectedTitle.toLowerCase() : selectedTitle }}
       <arrow-icon />
@@ -108,8 +109,6 @@ export default {
   min-width: 150px;
   .selected_item {
     width: 100%;
-    color: var(--text-color);
-    border-color: var(--input-color);
     @include flex-between;
     .icon {
       width: 12px;
