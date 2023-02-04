@@ -4,13 +4,17 @@
       <h3>Обратная связь</h3>
       <div class="feedback-wrap">
         <form class="feedback-form-wrap" @submit.prevent="submitFeedback">
-          <text-input v-model="feedback.name" placeholder="ФИО*" required />
+          <only-text-input
+            v-model="feedback.name"
+            placeholder="ФИО*"
+            required
+          />
           <email-input
             v-model="feedback.email"
             placeholder="E-mail*"
             required
           />
-          <text-input v-model="feedback.phone" placeholder="Телефон" />
+          <phone-input v-model="feedback.phone" placeholder="Телефон" />
           <bordered-textarea
             v-model="feedback.message"
             placeholder="Сообщение"
@@ -54,7 +58,8 @@ import EmailIcon from "@/assets/img/icons/EmailIcon.vue";
 import { addFeedback } from "@/data/firebase/feedbackApi";
 import MessageAlert from "@/components/popups/MessageAlert.vue";
 import EmailInput from "@/components/inputs/EmailInput.vue";
-import TextInput from "@/components/inputs/TextInput.vue";
+import PhoneInput from "@/components/inputs/PhoneInput.vue";
+import OnlyTextInput from "@/components/inputs/OnlyTextInput.vue";
 
 export default {
   data() {
@@ -68,7 +73,8 @@ export default {
     };
   },
   components: {
-    TextInput,
+    OnlyTextInput,
+    PhoneInput,
     EmailInput,
     MessageAlert,
     EmailIcon,

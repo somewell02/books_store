@@ -3,7 +3,7 @@
     type="text"
     :value="modelValue ?? ''"
     @input="updateInput"
-    v-mask="Array(maxLength).fill('S').join('')"
+    @keypress="notNumber"
   />
 </template>
 
@@ -34,6 +34,13 @@ export default {
   methods: {
     updateInput(event) {
       this.$emit("update:modelValue", event.target.value);
+    },
+    notNumber(event) {
+      event = event ? event : window.event;
+      const charCode = event.which ? event.which : event.keyCode;
+      if (!(charCode > 31 && (charCode < 48 || charCode > 57))) {
+        event.preventDefault();
+      } else return true;
     },
   },
 };
